@@ -1,0 +1,87 @@
+
+
+###
+GET http://localhost:3333
+
+
+
+###
+POST http://localhost:3333/user
+Content-Type: application/json
+
+{
+    "email": "lucas@gmail.com",
+    "name": "Evento Semana Formação.DEV",
+    "password":"123123"
+}
+
+
+###
+POST http://localhost:3333/auth
+Content-Type: application/json
+
+{
+    "email": "lucas@gmail.com",
+    "password":"123123"
+}
+
+
+###
+GET http://localhost:3333/me
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+
+
+
+###
+POST http://localhost:3333/product
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+
+{
+  "name": "Notebook",
+  "description": "Notebook novo para você",
+  "category": "Notebook",
+  "price": 2210.0,
+  "image": "https://vmipadamzfvehdfzndri.supabase.co/storage/v1/object/public/products/macbook.jpg?t=2024-12-12T21%3A41%3A39.395Z",
+  "stock":10
+}
+
+###
+POST http://localhost:3333/address
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+
+{
+  "address": "J3ose Vicente Cardoso Filho",
+  "complement":"aqefef",
+  "city":"wefwefwef",
+  "zipCode":"56517500",
+  "neighborhood":"wefwefwef",
+  "number":10,
+  "uf":"PE"
+}
+
+
+###
+POST http://localhost:3333/order
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+
+{
+  "idAddress": 1,
+  "products": [
+  {
+    "id_product": 2,
+    "quantity": 1
+  },
+  {
+    "id_product": 3,
+    "quantity": 1
+  },
+   {
+    "id_product": 3,
+    "quantity": 1
+  }
+]
+}
