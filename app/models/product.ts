@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, hasOne } from '@adonisjs/lucid/orm'
 import User from './user.js'
-import type { HasOne } from '@adonisjs/lucid/types/relations'
+import type { HasOne, HasMany } from '@adonisjs/lucid/types/relations'
+import OrderProduct from './order_product.js'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -36,4 +37,9 @@ export default class Product extends BaseModel {
 
   @hasOne(() => User)
   declare user: HasOne<typeof User>
+
+  @hasMany(() => OrderProduct, {
+    foreignKey: 'order_id',
+  })
+  declare orderProducts: HasMany<typeof OrderProduct>
 }

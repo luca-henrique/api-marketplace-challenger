@@ -12,7 +12,7 @@ export default class CreateOrderController {
 
       const user = await auth.authenticate()
 
-      const validateOrder = { userId: user.id, addressId: idAddress, payment, status: 'PENDING' }
+      const validateOrder = { user_id: user.id, adress_id: idAddress, payment, status: 'PENDING' }
 
       await createOrderValidation.validate(validateOrder)
 
@@ -25,8 +25,8 @@ export default class CreateOrderController {
         const findProduct = await Product.findBy('id', product.id_product)
         if (findProduct) {
           const orderProduct = {
-            orderId: order.id,
-            productId: findProduct.id,
+            order_id: order.id,
+            product_id: findProduct.id,
             quantity: product.quantity,
           }
 

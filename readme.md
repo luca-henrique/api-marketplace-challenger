@@ -40,3 +40,7 @@ FAILED
 
 A entrega falhou permanentemente.
 Exemplo: O endereço era inválido, o destinatário não estava disponível, ou houve um problema irreparável.
+
+# Dicas
+
+## Importante ::: Nunca USAR CAMELCASE NO ADONIS PARA FAZER RELACIONAMENTOS :D

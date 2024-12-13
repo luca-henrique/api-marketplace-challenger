@@ -1,22 +1,21 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne, manyToMany } from '@adonisjs/lucid/orm'
-import type { HasOne, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Product from './product.js'
-import User from './user.js'
-import Address from './address.js'
+import Order from './order.js'
 
 export default class OrderProduct extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column({ columnName: 'order_id' })
-  declare orderId: number
+  declare order_id: number
 
   @column()
   declare quantity: number
 
   @column({ columnName: 'product_id' })
-  declare productId: number
+  declare product_id: number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -24,17 +23,13 @@ export default class OrderProduct extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Product, {
-    pivotTable: 'orders_products',
-    pivotForeignKey: 'order_id',
-    pivotRelatedForeignKey: 'product_id',
-    pivotTimestamps: true,
+  @belongsTo(() => Order, {
+    foreignKey: 'order_id',
   })
-  declare products: ManyToMany<typeof Product>
+  declare order: BelongsTo<typeof Order>
 
-  @hasOne(() => User)
-  declare user: HasOne<typeof User>
-
-  @hasOne(() => Address)
-  declare address: HasOne<typeof Address>
+  @belongsTo(() => Product, {
+    foreignKey: 'product_id',
+  })
+  declare product: BelongsTo<typeof Product>
 }

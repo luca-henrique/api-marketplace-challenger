@@ -86,3 +86,16 @@ Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1
   }
 ]
 }
+
+
+###
+GET http://localhost:3333/order-by-user
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+
+
+###
+GET http://localhost:3333/product?page=1&limit=5&price=1001&search=book&category=notebook
+Content-Type: application/json
+Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+

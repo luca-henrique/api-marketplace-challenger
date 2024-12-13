@@ -2,11 +2,11 @@ import vine from '@vinejs/vine'
 
 export const createOrderValidation = vine.compile(
   vine.object({
-    userId: vine.number().unique(async (db, value) => {
+    user_id: vine.number().unique(async (db, value) => {
       const user = await db.from('users').where('id', value).first()
       return !!user
     }),
-    addressId: vine.number().unique(async (db, value) => {
+    address_id: vine.number().unique(async (db, value) => {
       const address = await db.from('addresses').where('id', value).first()
       return Boolean(address)
     }),

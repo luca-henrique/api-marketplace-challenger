@@ -1,17 +1,18 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, hasOne, manyToMany } from '@adonisjs/lucid/orm'
 import User from './user.js'
-import type { HasOne } from '@adonisjs/lucid/types/relations'
+import type { HasOne, HasMany } from '@adonisjs/lucid/types/relations'
+import OrderProduct from './order_product.js'
+import Address from './address.js'
 
 export default class Order extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column({ columnName: 'address_id' })
-  declare addressId: number
+  declare address_id: number
 
   @column({ columnName: 'user_id' })
-  declare userId: number
+  declare user_id: number
 
   @column({ columnName: 'total_price' })
   declare totalPrice: number
@@ -31,6 +32,19 @@ export default class Order extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @hasOne(() => User)
+  @hasOne(() => User, {
+    foreignKey: 'id',
+  })
   declare user: HasOne<typeof User>
+
+  @hasOne(() => Address, {
+    foreignKey: 'id',
+  })
+  @hasOne(() => Address)
+  declare address: HasOne<typeof Address>
+
+  @hasMany(() => OrderProduct, {
+    foreignKey: 'order_id',
+  })
+  declare orderProducts: HasMany<typeof OrderProduct>
 }
