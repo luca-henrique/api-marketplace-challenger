@@ -10,7 +10,9 @@ export default class extends BaseSchema {
       table.integer('address_id').unsigned().references('addresses.id').onDelete('CASCADE')
       table.integer('total_quantity').nullable()
       table.integer('total_price').nullable()
-      table.enum('payment', ['CREDIT_CARD', 'PIX', 'INVOICE', 'DEBIT_CARD', 'CASH'])
+      table
+        .enum('payment', ['CREDIT_CARD', 'PIX', 'INVOICE', 'DEBIT_CARD', 'CASH'])
+        .defaultTo('CREDIT_CARD')
       table
         .enum('status', [
           'PENDING',

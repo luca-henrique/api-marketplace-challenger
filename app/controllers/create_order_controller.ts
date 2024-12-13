@@ -1,29 +1,22 @@
 import Order from '#models/order'
 import OrderProduct from '#models/order_product'
 import Product from '#models/product'
-import type ProductType from '#models/product'
+import { createOrderValidation, updateOrderWithPartialAttributes } from '#validators/order'
+import { createOrderProductValidation } from '#validators/order_product'
 import type { HttpContext } from '@adonisjs/core/http'
-
-interface ProductProps {
-  id_product: number
-  quantity: number
-}
 
 export default class CreateOrderController {
   async handle({ request, response, auth }: HttpContext) {
     try {
-      const { idAddress, products } = request.all()
+      const { idAddress, products, payment } = request.all()
 
       const user = await auth.authenticate()
 
-      // const orderProduct = await OrderProduct.create({})
+      const validateOrder = { userId: user.id, addressId: idAddress, payment, status: 'PENDING' }
 
-      const order = await Order.create({
-        userId: user.id,
-        addressId: idAddress,
-        status: 'PENDING',
-        payment: 'CREDIT_CARD',
-      })
+      await createOrderValidation.validate(validateOrder)
+
+      const order = await Order.create(validateOrder)
 
       let totalQuantity = 0
       let totalPrice = 0
@@ -31,16 +24,22 @@ export default class CreateOrderController {
       for (const product of products) {
         const findProduct = await Product.findBy('id', product.id_product)
         if (findProduct) {
-          await OrderProduct.create({
+          const orderProduct = {
             orderId: order.id,
             productId: findProduct.id,
             quantity: product.quantity,
-          })
+          }
+
+          await createOrderProductValidation.validate(orderProduct)
+
+          await OrderProduct.create(orderProduct)
 
           totalPrice += findProduct?.price * product.quantity
           totalQuantity += product.quantity
         }
       }
+
+      await updateOrderWithPartialAttributes.validate({ totalPrice, totalQuantity })
 
       order.merge({ totalPrice, totalQuantity })
 

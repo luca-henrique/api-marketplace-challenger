@@ -69,6 +69,7 @@ Content-Type: application/json
 Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
 
 {
+  "payment":"CREDIT_CARD",
   "idAddress": 1,
   "products": [
   {
