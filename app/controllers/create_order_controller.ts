@@ -5,14 +5,28 @@ import { createOrderValidation, updateOrderWithPartialAttributes } from '#valida
 import { createOrderProductValidation } from '#validators/order_product'
 import type { HttpContext } from '@adonisjs/core/http'
 
+interface ProductProps {
+  id_product: number
+  quantity: number
+}
+
 export default class CreateOrderController {
   async handle({ request, response, auth }: HttpContext) {
     try {
-      const { idAddress, products, payment } = request.all()
+      const { addressId, products, payment } = request.all()
+
+      const listProducts: ProductProps[] = products
 
       const user = await auth.authenticate()
 
-      const validateOrder = { user_id: user.id, adress_id: idAddress, payment, status: 'PENDING' }
+      if (listProducts.length === 0) {
+        return response.badRequest({
+          type: 'Error',
+          message: 'Não foi possivel concluir',
+        })
+      }
+
+      const validateOrder = { user_id: user.id, address_id: addressId, payment, status: 'PENDING' }
 
       await createOrderValidation.validate(validateOrder)
 
@@ -21,7 +35,7 @@ export default class CreateOrderController {
       let totalQuantity = 0
       let totalPrice = 0
 
-      for (const product of products) {
+      for (const product of listProducts) {
         const findProduct = await Product.findBy('id', product.id_product)
         if (findProduct) {
           const orderProduct = {

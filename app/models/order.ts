@@ -9,6 +9,7 @@ export default class Order extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column({ columnName: 'address_id' })
   declare address_id: number
 
   @column({ columnName: 'user_id' })

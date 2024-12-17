@@ -3,6 +3,7 @@ import swaggerSpec from '../config/swagger.js'
 import AutoSwagger from 'adonis-autoswagger'
 
 import { middleware } from './kernel.js'
+const ListAddressByUsersController = () => import('#controllers/list_address_by_users_controller')
 const ListProductsController = () => import('#controllers/list_products_controller')
 const FindOrderByUserController = () => import('#controllers/find_order_by_user_controller')
 const CreateOrderController = () => import('#controllers/create_order_controller')
@@ -42,3 +43,5 @@ router.post('/order', [CreateOrderController])
 router.get('/order-by-user', [FindOrderByUserController])
 
 router.get('/product', [ListProductsController])
+
+router.get('/address-by-user', [ListAddressByUsersController])
