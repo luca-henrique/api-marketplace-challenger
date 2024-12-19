@@ -1,7 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { SignInCredentialsUseCase } from '../../domain/usecases/sign_in_credentials.js'
-import { SignInCredentialsService } from '../../infra/repository/sign_in_credentials.js'
 import { signInValidator } from '#validators/sign_in'
+import { SignInCredentialsUseCase } from '../../../domain/usecases/sign_in_credentials.js'
+import { SignInCredentialsService } from '../../../infra/repository/sign_in_credentials.js'
 
 export default class SignInsController {
   private readonly auth = new SignInCredentialsUseCase(new SignInCredentialsService())

@@ -3,13 +3,17 @@ import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
 
 import type { HasOne } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
+import Market from './market.js'
 
 export default class Address extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare userId: number
+  declare userId?: number
+
+  @column()
+  declare marketId?: number
 
   @column({ columnName: 'zip_code' })
   declare zipCode: string
@@ -40,4 +44,7 @@ export default class Address extends BaseModel {
 
   @hasOne(() => User)
   declare user: HasOne<typeof User>
+
+  @hasOne(() => Market)
+  declare market: HasOne<typeof Market>
 }

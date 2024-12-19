@@ -1,10 +1,10 @@
 import type { HttpContext } from '@adonisjs/core/http'
 
-import { CreateUserUseCase } from '../../domain/usecases/create_user.js'
-import { DbUserRepository } from '../../infra/repository/db_user_repository.js'
 import { createUserValidator } from '#validators/user'
+import { CreateUserUseCase } from '../../../domain/usecases/create_user.js'
+import { DbUserRepository } from '../../../infra/repository/db_user_repository.js'
 
-export default class CreateUserController {
+export default class SignUpController {
   private readonly createUserUseCase = new CreateUserUseCase(new DbUserRepository())
 
   public async handle({ request, response }: HttpContext) {

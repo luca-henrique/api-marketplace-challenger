@@ -50,7 +50,7 @@ Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1
 ###
 POST http://localhost:3333/address
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+Authorization: Bearer oat_MQ.QTFvaVlzeHFnSlBRdnk2WmVRZGpmbkN0X2R1N0xINzZZNnlkWkh3MzM1NTgyNDAwNjM
 
 {
   "address": "J3ose Vicente Cardoso Filho",

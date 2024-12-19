@@ -43,7 +43,8 @@ export default class extends BaseSchema {
           'TO',
         ])
         .notNullable()
-      table.integer('user_id').unsigned().references('users.id').onDelete('CASCADE')
+      table.integer('user_id').unsigned().references('users.id').onDelete('SET NULL')
+      table.integer('market_id').unsigned().references('markets.id').onDelete('SET NULL')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
