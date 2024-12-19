@@ -1,3 +1,5 @@
+https://mercado.carrefour.com.br/
+
 https://supabase.com/dashboard/project/lgkqqhbdvuwdkdvjqoru/building
 
 5VPnEvWTuQO43A7F
