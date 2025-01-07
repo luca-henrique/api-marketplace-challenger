@@ -7,6 +7,7 @@ import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 import Address from './address.js'
+import Market from './market.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -34,6 +35,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => Address)
   declare address: HasMany<typeof Address>
+
+  @hasMany(() => Market)
+  declare market: HasMany<typeof Market>
 
   static readonly accessTokens = DbAccessTokensProvider.forModel(User, {
     expiresIn: '30 days',

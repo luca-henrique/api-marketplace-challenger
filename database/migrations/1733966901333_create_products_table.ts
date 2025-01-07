@@ -14,10 +14,8 @@ export default class extends BaseSchema {
       table.string('image').notNullable()
 
       table.integer('market_id').unsigned().references('markets.id').onDelete('CASCADE')
-
       table.integer('category_id').unsigned().references('categories.id').onDelete('CASCADE')
-      table.integer('subcategory_id').unsigned().references('subcategories.id').onDelete('CASCADE')
-      table.integer('brand_id').unsigned().references('brands.id').onDelete('CASCADE')
+      table.integer('brand_id').unsigned().references('brands.id').onDelete('SET NULL')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

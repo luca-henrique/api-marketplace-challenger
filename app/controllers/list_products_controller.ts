@@ -17,13 +17,12 @@ export default class ListProductsController {
         if (search) {
           builder.whereRaw('LOWER(name) LIKE ?', [`%${search.toLowerCase()}%`])
         }
-        if (category) {
-          builder.whereRaw('LOWER(category) LIKE ?', [`%${category.toLowerCase()}%`])
-        }
         if (price) {
           builder.whereBetween('price', [0, price])
         }
       })
+      .preload('category')
+      .preload('market')
       .orderBy('price', 'asc')
       .paginate(+page, +limit)
 

@@ -1,112 +1,83 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
+import Category from '#models/category'
 
-const data = [
+const mock = [
   {
-    label: 'Achocolatado',
-    value: 'achocolatado',
-    selected: false,
-    quantity: 12,
+    name: 'Cozimento',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/baking-needs.png?t=2025-01-03T18%3A44%3A29.336Z',
+    path: '/products/baking-needs',
   },
   {
-    label: 'Águas',
-    value: 'aguas',
-    selected: false,
-    quantity: 94,
+    name: 'Beleza & Saúde',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/baking-needs.png?t=2025-01-03T18%3A44%3A29.336Z',
+    path: '/products/beauty-health',
   },
   {
-    label: 'Bebida Láctea',
-    value: 'bebida-lactea',
-    selected: false,
-    quantity: 64,
+    name: 'Bebidas',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/baking-needs.png?t=2025-01-03T18%3A44%3A29.336Z',
+    path: '/products/beverages',
   },
   {
-    label: 'Bebida Vegetal',
-    value: 'bebida-vegetal',
-    selected: false,
-    quantity: 55,
+    name: 'Padaria',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/bread-bakery.png?t=2025-01-03T18%3A44%3A56.089Z',
+    path: '/products/bread-bakery',
   },
   {
-    label: 'Cafés e Chás',
-    value: 'cafes-e-chas',
-    selected: false,
-    quantity: 89,
+    name: 'Culinária',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/cooking.png?t=2025-01-03T18%3A45%3A06.767Z',
+    path: '/products/cooking',
   },
   {
-    label: 'Cervejas',
-    value: 'cervejas',
-    selected: false,
-    quantity: 148,
+    name: 'Diabético',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/diabetic-food.png?t=2025-01-03T18%3A45%3A14.414Z',
+    path: '/products/diabetic-food',
   },
   {
-    label: 'Destilados',
-    value: 'destilados',
-    selected: false,
-    quantity: 257,
+    name: 'Detergentes',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/dish-detergents.png?t=2025-01-03T18%3A45%3A19.939Z',
+    path: '/products/dish-detergents',
   },
   {
-    label: 'Energéticos e Isotônicos',
-    value: 'energeticos-e-isotonicos',
-    selected: false,
-    quantity: 75,
+    name: 'Peixe e carne',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/fish.png?t=2025-01-03T18%3A45%3A29.585Z',
+    path: '/products/fish',
   },
   {
-    label: 'Espumantes',
-    value: 'espumantes',
-    selected: false,
-    quantity: 85,
+    name: 'Frutas Frescas',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/fresh-fruit.png?t=2025-01-03T18%3A45%3A35.007Z',
+    path: '/products/fresh-fruit',
   },
   {
-    label: 'Gelo',
-    value: 'gelo',
-    selected: false,
-    quantity: 1,
+    name: 'Óleo',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/oil.png?t=2025-01-03T18%3A45%3A43.957Z',
+    path: '/products/oil',
   },
   {
-    label: 'Kits de Bebidas e Presenteáveis',
-    value: 'kits-de-bebidas-e-presenteaveis',
-    selected: false,
-    quantity: 4,
+    name: 'Lanches',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/snacks.png?t=2025-01-03T18%3A45%3A50.081Z',
+    path: '/products/snacks',
   },
   {
-    label: 'Kits e Presenteáveis',
-    value: 'kits-e-presenteaveis',
-    selected: false,
-    quantity: 18,
-  },
-  {
-    label: 'Refrigerantes',
-    value: 'refrigerantes',
-    selected: false,
-    quantity: 179,
-  },
-  {
-    label: 'Sidra',
-    value: 'sidra',
-    selected: false,
-    quantity: 2,
-  },
-  {
-    label: 'Sucos e Refrescos',
-    value: 'sucos-e-refrescos',
-    selected: false,
-    quantity: 285,
-  },
-  {
-    label: 'Vinhos',
-    value: 'vinhos',
-    selected: false,
-    quantity: 511,
-  },
-  {
-    label: 'Xarope Concentrado',
-    value: 'xarope-concentrado',
-    selected: false,
-    quantity: 16,
+    name: 'Legumes Frescos',
+    image:
+      'https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/categories/fresh-vegetables.png?t=2025-01-03T18%3A46%3A23.497Z',
+    path: '/products/fresh-vegetables',
   },
 ]
 
 export default class extends BaseSeeder {
   async run() {
-    // Write your database queries inside the run method
+    await Category.createMany(mock)
   }
 }

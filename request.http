@@ -29,22 +29,23 @@ Content-Type: application/json
 ###
 GET http://localhost:3333/me
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
 
 
 ###
 POST http://localhost:3333/product
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
 {
   "name": "Notebook 2",
   "description": "Notebook novo para você",
-  "category": "Notebook",
-  "price": 2210.0,
-  "image": "https://vmipadamzfvehdfzndri.supabase.co/storage/v1/object/public/products/macbook.jpg?t=2024-12-12T21%3A41%3A39.395Z",
-  "stock":10
+  "price": 110.0,
+  "image": "https://wmxpnlilkuedvwtzjwqo.supabase.co/storage/v1/object/public/images/products/5.png?t=2025-01-06T20%3A32%3A13.436Z",
+  "stock":10,
+  "marketId":1,
+  "categoryId": 1
 }
 
 ###
@@ -66,7 +67,7 @@ Authorization: Bearer oat_MQ.QTFvaVlzeHFnSlBRdnk2WmVRZGpmbkN0X2R1N0xINzZZNnlkWkh
 ###
 POST http://localhost:3333/order
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
 {
   "payment":"CREDIT_CARD",
@@ -91,18 +92,28 @@ Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1
 ###
 GET http://localhost:3333/order-by-user
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
-
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
 ###
-GET http://localhost:3333/product?page=1&limit=5&price=1001&search=book&category=notebook
+GET http://localhost:3333/product?page=1
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
-
-
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
 ###
 GET http://localhost:3333/address-by-user
 Content-Type: application/json
-Authorization: Bearer oat_MQ.MTRWc013STFIMlE5TG9PNWJrekdFQUlTWWg4dE9UdHpvVVdkSy1FMzEzMjgxNTkzMTc
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
 
+###
+GET http://localhost:3333/api/category
+Content-Type: application/json
+
+###
+POST http://localhost:3333/market
+Content-Type: application/json
+Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+
+{
+    "name": "Mercado Paes",
+    "addressId":"1"
+}

@@ -1,37 +1,25 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
+import Address from '#models/address'
 
-const uf = [
-  'AC',
-  'AL',
-  'AP',
-  'AM',
-  'BA',
-  'CE',
-  'DF',
-  'ES',
-  'GO',
-  'MA',
-  'MT',
-  'MS',
-  'MG',
-  'PA',
-  'PB',
-  'PR',
-  'PE',
-  'PI',
-  'RJ',
-  'RN',
-  'RS',
-  'RO',
-  'RR',
-  'SC',
-  'SP',
-  'SE',
-  'TO',
+const address = [
+  {
+    address: 'Rua A',
+    complement: 'Boa vista',
+    city: 'Arcoverde',
+    zipCode: '565444',
+    neighborhood: 'Cohab 1',
+    uf: 'PE',
+    number: '10',
+    user_id: 1,
+  },
 ]
 
 export default class extends BaseSeeder {
   async run() {
-    // Write your database queries inside the run method
+    try {
+      await Address.createMany(address)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

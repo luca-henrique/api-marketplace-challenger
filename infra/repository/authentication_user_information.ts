@@ -7,7 +7,7 @@ import { Authenticators } from '@adonisjs/auth/types'
 export class AuthUserInfoDbRepository implements AuthenticationUserInformationDbRepository {
   async getAuthenticatedUserInformation(auth: Authenticator<Authenticators>): Promise<UserType> {
     await auth.check()
-    const user = auth.user
+    const user = await auth.user
     return user as UserType
   }
 }
