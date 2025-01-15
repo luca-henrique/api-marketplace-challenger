@@ -5,6 +5,7 @@ import Category from './category.js'
 
 import type { HasOne, HasMany, BelongsTo } from '@adonisjs/lucid/types/relations'
 import OrderProduct from './order_product.js'
+import Avaliation from './avaliation.js'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -47,4 +48,7 @@ export default class Product extends BaseModel {
     foreignKey: 'order_id',
   })
   declare orderProducts: HasMany<typeof OrderProduct>
+
+  @hasMany(() => Avaliation)
+  declare avaliations: HasMany<typeof Avaliation>
 }

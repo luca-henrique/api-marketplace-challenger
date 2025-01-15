@@ -23,6 +23,7 @@ export default class FindOrderByUserController {
           orderProductsQuery.preload('product') // Carregar os produtos relacionados
         })
         .preload('address')
+        .orderBy('price', 'asc')
         .paginate(page, limit)
 
       response.ok(order)

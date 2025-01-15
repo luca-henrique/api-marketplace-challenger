@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.string('description').notNullable()
       table.integer('stock').defaultTo(0)
       table.string('image').notNullable()
+      table.integer('visit').defaultTo(0)
 
       table.integer('market_id').unsigned().references('markets.id').onDelete('CASCADE')
       table.integer('category_id').unsigned().references('categories.id').onDelete('CASCADE')

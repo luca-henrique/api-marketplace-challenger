@@ -29,14 +29,14 @@ Content-Type: application/json
 ###
 GET http://localhost:3333/me
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 
 
 ###
 POST http://localhost:3333/product
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 {
   "name": "Notebook 2",
@@ -49,9 +49,9 @@ Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnV
 }
 
 ###
-POST http://localhost:3333/address
+POST http://localhost:3333/api/address
 Content-Type: application/json
-Authorization: Bearer oat_MQ.QTFvaVlzeHFnSlBRdnk2WmVRZGpmbkN0X2R1N0xINzZZNnlkWkh3MzM1NTgyNDAwNjM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 {
   "address": "J3ose Vicente Cardoso Filho",
@@ -67,7 +67,7 @@ Authorization: Bearer oat_MQ.QTFvaVlzeHFnSlBRdnk2WmVRZGpmbkN0X2R1N0xINzZZNnlkWkh
 ###
 POST http://localhost:3333/order
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 {
   "payment":"CREDIT_CARD",
@@ -92,28 +92,34 @@ Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnV
 ###
 GET http://localhost:3333/order-by-user
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 ###
-GET http://localhost:3333/product?page=1
+GET http://localhost:3333/product?page=2&limit=6
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 ###
-GET http://localhost:3333/address-by-user
+GET http://localhost:3333/api/address-by-user
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_Mg.aDFoYlg4R3dMYkpEQWpyUkFMN1puYW95ZlMyLS1POW1KZjB4MkoxdjIyNzAxODY3NQ
 
 ###
-GET http://localhost:3333/api/category
+GET http://localhost:3333/api/category?page=1
 Content-Type: application/json
 
 ###
 POST http://localhost:3333/market
 Content-Type: application/json
-Authorization: Bearer oat_MQ.dmU3SjU1STd5SjE5QXNXQ3VMN3ZWWDRDWmZQS2NlOF9oanF1MnVmSTI0NzgwOTMxMTM
+Authorization: Bearer oat_MQ.eVVHLVNXQnBSSHdIdk5wdUV0bXBTRUJrQk9RTXdzdkxRVDV0OTgxMTE5OTgwMTM3Mg
 
 {
     "name": "Mercado Paes",
     "addressId":"1"
 }
+
+
+###
+GET http://localhost:3333/product/baking-needs
+Content-Type: application/json
+

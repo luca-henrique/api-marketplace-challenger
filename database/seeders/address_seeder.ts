@@ -9,7 +9,7 @@ const address = [
     zipCode: '565444',
     neighborhood: 'Cohab 1',
     uf: 'PE',
-    number: '10',
+    number: 10,
     user_id: 1,
   },
 ]

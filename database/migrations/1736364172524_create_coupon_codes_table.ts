@@ -1,26 +1,19 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'avaliations'
+  protected tableName = 'coupon_codes'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('rate').notNullable()
-      table.string('comment').notNullable()
+      table.string('code').notNullable()
+      table.integer('value').notNullable()
       table
-        .integer('user_id')
+        .integer('market_id')
         .unsigned()
         .nullable()
         .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
-      table
-        .integer('product_id')
-        .unsigned()
-        .nullable()
-        .references('id')
-        .inTable('products')
+        .inTable('markets')
         .onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')

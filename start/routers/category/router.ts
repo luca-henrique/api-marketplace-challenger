@@ -5,5 +5,6 @@ const GetAllCategoriesController = () => import('#controllers/category/get_categ
 router
   .group(() => {
     router.get('/category', [GetAllCategoriesController])
+    router.get('/category/:id', [GetAllCategoriesController])
   })
   .prefix('/api')

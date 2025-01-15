@@ -22,7 +22,7 @@ export default class Address extends BaseModel {
   declare address: string
 
   @column()
-  declare number: string
+  declare number: number
 
   @column()
   declare complement: string

@@ -9,6 +9,9 @@ export default class ListProductsController {
     const price = Number(request.qs().price || null)
     const search = request.qs().search || null
     const category = request.qs().category || null
+    const orderBy = request.qs().orderBy || 'asc'
+
+    const visits = request.qs().visits || null
 
     await listProductQueryParamsValidator.validate({ page, limit, price, search, category })
 
@@ -20,10 +23,14 @@ export default class ListProductsController {
         if (price) {
           builder.whereBetween('price', [0, price])
         }
+
+        if (visits) {
+          builder.where('visits', '>', visits)
+        }
       })
       .preload('category')
       .preload('market')
-      .orderBy('price', 'asc')
+      .orderBy('price', orderBy)
       .paginate(+page, +limit)
 
     return response.ok(products)
